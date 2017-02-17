@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class makeRiver
 	{
+		static boolean stop=false;
 		static boolean hooked=false;
 		static int fishCounter=1;
 		static int board[][]=new int [8][8];
@@ -17,7 +18,7 @@ public class makeRiver
 					 int randomRow=(int)(Math.random()*8);
 						int randomCol=(int)(Math.random()*8);
 						
-						board[randomRow][randomCol]= 8008;
+						board[randomRow][randomCol]= 9;
 				 }
 		}
 		
@@ -102,7 +103,7 @@ public class makeRiver
 			int randNumFish=(int)(Math.random()*5)+1;
 			
 			
-			int randomRow=(int)(Math.random()*8);
+			int randomRow=(int)(Math.random()*7)+1;
 			int randomCol=(int)(Math.random()*8);
 			
 			for(int j=0; j<randNumFish;j++)
@@ -111,8 +112,7 @@ public class makeRiver
 					fishCounter++;
 				}
 			
-			if(hooked=true)
-				{
+			
 			switch (fishCounter-1)
 			{
 			case 1:
@@ -149,7 +149,7 @@ public class makeRiver
 			}
 				}
 			
-		}
+		
 		
 		
 		
@@ -220,12 +220,13 @@ public class makeRiver
 				int fishRow=0;
 				int fishCol=0;
 				
+				int counter=0;
 				
 				int smallest=(int)(Math.random()*1)+1;
 				int medium=(int)(Math.random()*1)+1;
 				int mediumLarge=(int)(Math.random()*1)+1;
-				int big=(int)(Math.random()*1)+1;
-				int huge=(int)(Math.random()*1)+1;
+				int big=(int)(Math.random()*2)+1;
+				int huge=(int)(Math.random()*3)+1;
 				
 				
 				for(int j=0; j<board.length; j++ )
@@ -280,13 +281,43 @@ public class makeRiver
 			      		               System.out.println("you fought a good fight, but the fish won");
 			      		            		}
 			      		              }
+		            			else
+		            				{
+		            					while(stop==false)
+		            						{
+		            						displayRiver();
+		            						
+		//            						if((row+counter==fishRow-1||row+counter==fishRow) && (col==fishCol))
+//	            							{
+//            								System.out.println("you caught a fish");
+//	            							}
+		            						
+		            						int row1=7-row-counter;
+		            						board[row+counter-1][col]=0;
+		            					board[row+counter][col]=8;
+		            					
+		            					counter++;
+		            					
+		            					if(row1==0)
+		            						{
+		            							System.out.println("it was a good cast but no fish was there");
+		            							stop=true;
+		            						}
+		            					
+		            					
+		            					
+		            					
+		            					
+		            						}
+		            					
+		            				}
 		            			System.out.println("wanna keep fishing? (1)yes (2)no");
 		    					Scanner input1=new Scanner(System.in);
 		    					 String decision1=input1.nextLine();
 		            			if(decision1.equals("1"))
 				            		{
-				            		
-				    						
+				            					makeMatrix();
+				    							displayRiver();
 				    							userMove();
 				    						
 				    					
@@ -303,32 +334,6 @@ public class makeRiver
 				
 					
 				}
-				
-				
-//				for(int i=0; i<board.length; i++ )
-//			        {
-//
-//				
-//				for(int b=0; b<board[0].length; b++)
-//		            	{
-//		            	int matrixRunner = board[i][b];
-//		            	if(matrixRunner!=0)
-//		            		{
-//		            			
-//		            			if((row==i-1||row==i) && (col==b))
-//		      		              {
-//		      		                System.out.println("you hooked a fish!!!");
-//		      		              }
-//		            			
-//		            			
-//		            		}
-		            	
-		         //   }
-				
-				
-				
-				
-				
 				
 				
 				
